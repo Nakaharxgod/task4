@@ -5,13 +5,11 @@ import lombok.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@NoArgsConstructor
 @Entity
-@Table(name = "users")
+@Table(name="users")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,12 +20,23 @@ public class User {
     @Column(name = "mail", nullable = false, unique = true)
     private String mail;
 
+    public User(String login, String mail) {
+        this.login = login;
+        this.mail = mail;
+    }
+
+    public void setName(String name) {
+        this.login = login;
+    }
+
+    public void setmail(String mail) {
+        this.mail = mail;
+    }
+
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
+        return "id=" + id +
                 ", login='" + login + '\'' +
-                ", mail='" + mail + '\'' +
-                '}';
+                ", mail='" + mail + '\'';
     }
 }
